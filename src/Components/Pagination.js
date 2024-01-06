@@ -19,13 +19,13 @@ function Pagination({ totalPages, currentPage, setCurrentPage }) {
     for (let i = 1; i <= totalPages; i++) {
       paginationLinks.push(
         <li key={i}>
-          <a
+          <button
             className={`pagination-link ${currentPage === i ? 'is-current' : ''}`}
             aria-label={`Goto page ${i}`}
             onClick={() => setCurrentPage(i)}
           >
             {i}
-          </a>
+          </button>
         </li>
       );
     }
@@ -34,8 +34,8 @@ function Pagination({ totalPages, currentPage, setCurrentPage }) {
 
   return (
     <nav className="pagination navbar is-fixed-bottom" role="navigation" aria-label="pagination" >
-      <a className={`pagination-previous ${currentPage === 1 ? 'is-disabled' : ''}`} onClick={handlePreviousClick}>Previous </a>
-      <a className={`pagination-next ${currentPage === totalPages ? 'is-disabled' : ''}`} onClick={handleNextClick}>Next page</a>
+      <button className={`pagination-previous ${currentPage === 1 ? 'is-disabled' : ''}`} onClick={handlePreviousClick}>Previous </button>
+      <button className={`pagination-next ${currentPage === totalPages ? 'is-disabled' : ''}`} onClick={handleNextClick}>Next page</button>
       <ul className="pagination-list">{renderPaginationLinks()}</ul>
     </nav>
   );
