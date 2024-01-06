@@ -29,7 +29,6 @@ function App() {
       const querySnapshot = await getDocs(collection(db, "notes"));
       const fetchedNotes = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setNotes(fetchedNotes);
-      console.log(notes)
     } catch (error) {
       handleError(error, "Error Fetching Notes")
     }
@@ -105,7 +104,7 @@ function App() {
       await updateDoc(noteRef, {
         checked: value
       });
-    await  fetchNotes();
+      await fetchNotes();
     } catch (error) {
       handleError(error, "could not Mark")
     }
