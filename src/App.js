@@ -29,12 +29,14 @@ function App() {
       const querySnapshot = await getDocs(collection(db, "notes"));
       const fetchedNotes = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setNotes(fetchedNotes);
+      console.log(notes)
     } catch (error) {
       handleError(error, "Error Fetching Notes")
     }
   };
   useEffect(() => {
     fetchNotes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //  opening modal 
@@ -64,14 +66,14 @@ function App() {
     } catch (error) {
       handleError(error, "Error Adding Notes")
     }
-    fetchNotes();
+    await fetchNotes();
   };
 
   //  deleting data 
   const onDelete = async (val) => {
     try {
       await deleteDoc(doc(db, "notes", val));
-      fetchNotes();
+      await fetchNotes();
     } catch (error) {
       handleError(error, "Error Deleting Note")
     }
@@ -90,7 +92,7 @@ function App() {
       const currentNote = currentNoteSnapshot.data();
       const updated = { ...currentNote, ...updatedNote };
       await updateDoc(noteRef, updated);
-      fetchNotes();
+      await fetchNotes();
     } catch (error) {
       handleError(error, "Error modifying note")
     }
@@ -103,7 +105,7 @@ function App() {
       await updateDoc(noteRef, {
         checked: value
       });
-      fetchNotes();
+    await  fetchNotes();
     } catch (error) {
       handleError(error, "could not Mark")
     }
@@ -116,7 +118,7 @@ function App() {
       await updateDoc(noteRef, {
         pinned: value
       });
-      fetchNotes();
+      await fetchNotes();
     } catch (error) {
       handleError("Could not Pin")
     }
@@ -128,7 +130,7 @@ function App() {
   };
 
   // close Error modal 
-  const closeError=(value)=>{
+  const closeError = (value) => {
     setErrorModalVisible(value)
   };
   return (
