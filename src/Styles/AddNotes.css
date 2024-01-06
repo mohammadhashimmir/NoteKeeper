@@ -1,0 +1,17 @@
+.m1{
+    height: 55vh;
+}
+.h1{
+height: 50px;
+/* background-color: #FFE6FA ; */
+}
+.b1{
+background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%) ;
+}
+.d1{
+   background-color:black;
+}
+.f1{
+    height: 60px;
+    /* background-color:#FFE6FA */
+}
