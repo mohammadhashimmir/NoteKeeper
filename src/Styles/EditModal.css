@@ -3,7 +3,7 @@
 }
 .h2{
 height:5px;
-background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)
+/* background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)  */
 }
 .d2{
    background-color:black;
@@ -11,7 +11,7 @@ background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)
 .f2{
     height: 50px;
 
-    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)
+    /* background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)  */
 }
 .editCols{
     height:100%;

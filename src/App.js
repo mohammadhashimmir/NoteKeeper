@@ -8,6 +8,7 @@ import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, getDoc } from "
 import { db } from './config/Firestore';
 import NoteList from './Components/NoteList';
 import ErrorModal from './Components/ErrorModal';
+import Loader from './Components/Loader';
 
 function App() {
   const [add, setAdd] = useState(false);
@@ -15,6 +16,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [errorModalVisible, setErrorModalVisible] = useState(false);
+  const [showLoader, setShowLoader]=useState(false);
 
   //  handling error 
   const handleError = (error, errorMessage) => {
@@ -25,12 +27,16 @@ function App() {
 
   // getting data 
   const fetchNotes = async () => {
+    setShowLoader(true);
     try {
       const querySnapshot = await getDocs(collection(db, "notes"));
       const fetchedNotes = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setNotes(fetchedNotes);
     } catch (error) {
       handleError(error, "Error Fetching Notes")
+    }
+    finally{
+      setShowLoader(false)
     }
   };
   useEffect(() => {
@@ -144,7 +150,8 @@ function App() {
 
       {add ? <AddNotes save={onSaveNote} close={onModalClose} /> : null}
       <br />
-      <NoteList notes={notes} deleteIt={onDelete} onSave={onSaveEdit} checkBox={checkCheckBox} clickPin={onPinClick} searchTerm={searchTerm} />
+      { showLoader ? <Loader/>
+      :<NoteList notes={notes} deleteIt={onDelete} onSave={onSaveEdit} checkBox={checkCheckBox} clickPin={onPinClick} searchTerm={searchTerm} load={showLoader}/> }
 
     </div>
   );

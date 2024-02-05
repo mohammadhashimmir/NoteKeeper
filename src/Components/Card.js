@@ -43,12 +43,15 @@ function Card({ note, toggleIt, deleteIt, checkBox, clickPin }) {
                             onChange={onCheckboxChange}
                             title='Mark as Done'
                         />
+                        <div style={{padding:"4px"}}>
                         <button className={note.pinned ? 'button is-success' : 'button'} onClick={onPinClick}  title='Pin Note'>
                             <Icon path={mdiPin} size={0.8} />
                         </button>
                         <button className="button" onClick={onDeleteClick} title='Delete Note'>
                             <Icon path={mdiDelete} size={0.8} />
                         </button>
+                        </div>
+                       
                     </header>
 
                     <div className="card-content" onClick={onCardBodyClick} style={{overflow:"hidden"}}>
