@@ -33,7 +33,7 @@ function Pagination({ totalPages, currentPage, setCurrentPage }) {
   };
 
   return (
-    <nav style={{width:"100%"}} className="pagination navbar is-fixed-bottom" role="navigation" aria-label="pagination" >
+    <nav className="pagination navbar is-fixed-bottom" role="navigation" aria-label="pagination" >
       <button className={`pagination-previous ${currentPage === 1 ? 'is-disabled' : ''}`} onClick={handlePreviousClick}>Previous </button>
       <button className={`pagination-next ${currentPage === totalPages ? 'is-disabled' : ''}`} onClick={handleNextClick}>Next page</button>
       <ul className="pagination-list">{renderPaginationLinks()}</ul>
