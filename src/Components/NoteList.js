@@ -19,7 +19,7 @@ function NoteList({ notes, deleteIt, onSave, checkBox, clickPin, searchTerm }) {
     const sortedNotes = [...filteredNotes].sort((a, b) => {
         const dateA = new Date(a.dateTimeCreated).getTime();
         const dateB = new Date(b.dateTimeCreated).getTime();
-        return dateA - dateB;
+        return dateB - dateA;
     });
 
     // sort by pinned notes 
